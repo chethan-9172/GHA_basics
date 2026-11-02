@@ -19,7 +19,7 @@ jobs:
             CLOUD: AZURE_cloud
         steps:
             - name: printing job level variable
-              run: echo "this is $CLOUD which is workflow level"
+              run: echo "this is $CLOUD which is job level"
 
   step_level_variable:
         runs-on: ubuntu-latest
@@ -27,7 +27,7 @@ jobs:
             - name: printing step level variable
               env:
                 CLOUD: GOOGLE_cloud
-              run: echo "this is $CLOUD which is workflow level"
+              run: echo "this is $CLOUD which is step level"
 
   
 
