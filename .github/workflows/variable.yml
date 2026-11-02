@@ -1,0 +1,35 @@
+---
+name: variables examples
+
+on: workflow_dispatch
+
+env:
+  CLOUD: AWS_cloud
+
+jobs:
+  workflow_level_variable:
+    runs-on: ubuntu-latest
+    steps:
+        - name: printing workflow level variable
+          run: echo "this is $CLOUD which is workflow level"
+
+  job_level_variable:
+        runs-on: ubuntu-latest
+        env:
+            CLOUD: AZURE_cloud
+        steps:
+            - name: printing workflow level variable
+              run: echo "this is $CLOUD which is workflow level"
+
+  step_level_variable:
+        runs-on: ubuntu-latest
+        steps:
+            - name: printing workflow level variable
+              env:
+                CLOUD: GOOGLE_cloud
+              run: echo "this is $CLOUD which is workflow level"
+
+  
+
+
+
