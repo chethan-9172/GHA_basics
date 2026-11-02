@@ -1,0 +1,15 @@
+name: exercise1
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  basic_commands:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echoing
+        run: echo "this is the first workflow"
+
+   
