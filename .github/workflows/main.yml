@@ -11,5 +11,7 @@ jobs:
     steps:
       - name: echoing
         run: echo "this is the first workflow"
+      - name: pinging
+        run: ping -c 4 google.com
 
    
