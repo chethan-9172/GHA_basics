@@ -20,7 +20,7 @@ jobs:
       - name: AWS_authentication
         uses: aws-actions/configure-aws-credentials@v6.3.0
         with:
-          audience: sts.amazonaws.com.cn
+          audience: sts.amazonaws.com.
           aws-region: ap-south-2
           role-to-assume: arn:aws:iam::310971188839:role/GHA-role
 
