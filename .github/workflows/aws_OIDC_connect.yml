@@ -23,25 +23,18 @@ jobs:
           audience: sts.amazonaws.com.
           aws-region: ap-south-2
           role-to-assume: arn:aws:iam::310971188839:role/GHA-role
-
-  checkout:
-    runs-on: ubuntu-latest
-    steps:
+          
       - name: code checkout
         uses: actions/checkout@v6
 
-  S3_bucket_creation:
-    runs-on: ubuntu-latest
-    steps:
+
       - name: S3_bucket _creation
         run: aws s3 mb s3://${{ inputs.bucketname }}
-
-  simple_commands:
-    runs-on: ubuntu-latest
-    steps:
+        
       - name: get caller identity
         run: aws sts get-caller-identity
       
+  
 
   
   
