@@ -22,7 +22,7 @@ jobs:
         with:
           audience: sts.amazonaws.com.cn
           aws-region: ap-south-2
-          role-to-assume: arn:aws:iam::310971188839:role/GHA-role 
+          role-to-assume: arn:aws:iam::310971188839:role/GHA-role
 
   checkout:
     runs-on: ubuntu-latest
