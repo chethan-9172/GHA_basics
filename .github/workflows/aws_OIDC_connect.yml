@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: S3_bucket _creation
-        run: aws s3 mb s3://${{ input.bucketname }}
+        run: aws s3 mb s3://${{ inputs.bucketname }}
 
   simple_commands:
     runs-on: ubuntu-latest
