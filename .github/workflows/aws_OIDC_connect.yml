@@ -22,7 +22,7 @@ jobs:
         with:
           audience: sts.amazonaws.com
           aws-region: ap-south-2
-          role-to-assume: arn:aws:iam::310971188839:role/GHA-role
+          role-to-assume: arn:aws:iam::310971188839:role/GHA-AWS-role
           
       - name: code checkout
         uses: actions/checkout@v6
