@@ -1,0 +1,47 @@
+name: aws_OIDC_connect
+
+on:
+  workflow_dispatch:
+    inputs:
+      bucketname:
+        description: "enter the bucket name"
+        type: string
+        required: true
+  
+
+permissions: 
+  id-token: write
+  contents: read
+
+jobs:
+  AWS_authentication:
+    runs-on: ubuntu-latest
+    steps:
+      - name: AWS_authentication
+        uses: aws-actions/configure-aws-credentials@v6.3.0
+        with:
+          audience: sts.amazonaws.com.cn
+          aws-region: ap-south-2
+          role-to-assume: arn:aws:iam::310971188839:role/GHA-role 
+
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v6
+
+  S3_bucket_creation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: S3_bucket _creation
+        run: aws s3 mb s3://${{ input.bucketname }}
+
+  simple_commands:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get caller identity
+        run: aws sts get-caller-identity
+      
+
+  
+  
