@@ -18,21 +18,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: AWS_authentication
-        uses: aws-actions/configure-aws-credentials@v6.1.0
+        uses: aws-actions/configure-aws-credentials@v6.3.0
         with:
           audience: sts.amazonaws.com
           aws-region: ap-south-2
           role-to-assume: arn:aws:iam::310971188839:role/GHA-AWS-role
+          
+      - name: get caller identity
+        run: aws sts get-caller-identity
           
       - name: code checkout
         uses: actions/checkout@v6
 
 
       - name: S3_bucket _creation
-        run: aws s3 mb s3://${{ inputs.bucketname }}
+        run: aws s3 mb s3://${{ inputs.bucketname }} --region ap-south-2
         
-      - name: get caller identity
-        run: aws sts get-caller-identity
+
       
   
 
