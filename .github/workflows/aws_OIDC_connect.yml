@@ -34,12 +34,7 @@ jobs:
       - name: S3_bucket _creation
         run: aws s3 mb s3://${{ inputs.bucketname }} --region ap-south-1
 
-      - name: Check GitHub Context
-        run: |
-          echo "Repository: $GITHUB_REPOSITORY"
-          echo "Ref: $GITHUB_REF"
-          echo "Event: $GITHUB_EVENT_NAME"
-        
+  
 
       
   
