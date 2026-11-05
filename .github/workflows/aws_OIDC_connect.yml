@@ -22,7 +22,7 @@ jobs:
         with:
           audience: sts.amazonaws.com
           aws-region: ap-south-2
-          role-to-assume: arn:aws:iam::310971188839:role/GHA-AWS-role
+          role-to-assume: arn:aws:iam::310971188839:role/GHA-ROLE
           
       - name: get caller identity
         run: aws sts get-caller-identity
