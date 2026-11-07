@@ -14,8 +14,11 @@ jobs:
   AWS_connectivity:
     runs-on: ubuntu-latest
     steps:
-      - name: aws OIDC connectivity 
+      - name: aws OIDC connectivity
+        id: keys
         uses: aws-actions/configure-aws-credentials@v6.3.0
         with:
           aws-region: ${{ vars.AWS_REGION }}
           role-to-assume: ${{ vars.AWS_ROLE }}
+      - name: get caller identity
+        run: aws sts get-caller-identity
