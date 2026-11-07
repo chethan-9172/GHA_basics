@@ -22,9 +22,15 @@ jobs:
           role-to-assume: ${{ vars.AWS_ROLE }}
       - name: get caller identity
         run: aws sts get-caller-identity
-
-      - name: get newly gennered keys
+      - name: deployment through SSM
         run: |
-          keys = echo ${{ steps.keys.outputs}}
+          aws ssm send-command \
+          --instance-ids "${{ secrets.INSTANCE_ID }}" \
+          --document-name "deployment" \
+          --parameters 'commands=["scp -o StrictHostKeyChecking=no \
+           ./chetan.html \
+            ${{ vars.AWS_USER }}@16.176.148.92:/var/www/html/"]' \
+          --region ${{ vars.AWS_REGION }}
+
 
     
