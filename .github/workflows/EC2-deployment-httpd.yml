@@ -22,3 +22,9 @@ jobs:
           role-to-assume: ${{ vars.AWS_ROLE }}
       - name: get caller identity
         run: aws sts get-caller-identity
+
+      - name: get newly gennered keys
+        run: |
+          keys = echo ${{ steps.keys.outputs}}
+
+    
