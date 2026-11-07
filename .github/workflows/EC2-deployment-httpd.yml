@@ -22,15 +22,14 @@ jobs:
           role-to-assume: ${{ vars.AWS_ROLE }}
       - name: get caller identity
         run: aws sts get-caller-identity
-      - name: deployment through SSM
+      - name: Deploy through SSM
         run: |
+          B64=$(base64 -w0 chetan.html)
           aws ssm send-command \
-          --instance-ids "${{ secrets.INSTANCE_ID }}" \
-          --document-name "AWS-RunShellScript" \
-          --parameters 'commands=["scp -o StrictHostKeyChecking=no \
-           ./chetan.html \
-            ${{ vars.AWS_USER }}@16.176.148.92:/var/www/html/"]' \
-          --region ${{ vars.AWS_REGION }}
+            --instance-ids "${{ secrets.INSTANCE_ID }}" \
+            --document-name "AWS-RunShellScript" \
+            --parameters "commands=[\"echo $B64 | base64 -d > /var/www/html/chetan.html\"]" \
+            --region ${{ vars.AWS_REGION }}
 
 
     
