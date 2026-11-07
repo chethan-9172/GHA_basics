@@ -26,7 +26,7 @@ jobs:
         run: |
           aws ssm send-command \
           --instance-ids "${{ secrets.INSTANCE_ID }}" \
-          --document-name "deployment" \
+          --document-name "AWS-RunShellScript" \
           --parameters 'commands=["scp -o StrictHostKeyChecking=no \
            ./chetan.html \
             ${{ vars.AWS_USER }}@16.176.148.92:/var/www/html/"]' \
